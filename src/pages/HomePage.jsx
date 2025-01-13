@@ -26,11 +26,11 @@ export default function HomePage() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error {error}</div>;
   }
 
   return (
@@ -40,9 +40,8 @@ export default function HomePage() {
         {movies.map((movie) => (
           <div className="col-md-4" key={movie.id}>
             <div className="card mb-4 shadow-sm">
-              {/* Usa l'immagine dal campo `image` del film */}
               <img
-                src={`http://localhost:3000/images/${movie.image}`} // Carica l'immagine usando il nome del file
+                src={`http://localhost:3000/images/${movie.image}`}
                 alt={movie.title}
                 className="card-img-top"
               />

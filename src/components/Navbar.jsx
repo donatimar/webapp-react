@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const handleClick = (event) => {
-    event.preventDefault(); // Previene il comportamento di default (navigazione)
+    event.preventDefault();
   };
 
   return (

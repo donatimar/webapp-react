@@ -30,43 +30,69 @@ export default function MovieDetail() {
 
   // Gestione del caricamento
   if (loading) {
-    return <div>Loading</div>;
+    return <div className="text-center">Loading...</div>;
   }
 
   // Gestione degli errori
   if (error) {
-    return <div>Error {error}</div>;
+    return <div className="text-center text-danger">Error: {error}</div>;
   }
 
   return (
     <div className="container py-5">
-      <h1>{movie.title}</h1>
-      <p>
-        <strong>Director:</strong> {movie.director}
-      </p>
-      <p>
-        <strong>Genre:</strong> {movie.genre}
-      </p>
-      <p>
-        <strong>Release Year:</strong> {movie.release_year}
-      </p>
-      <p>
-        <strong>Abstract:</strong> {movie.abstract}
-      </p>
+      <div className="row">
+        {/* Immagine */}
+        <div className="col-md-4">
+          <div className="card mb-4 shadow-sm w-100">
+            <img
+              src={`http://localhost:3000/images/${movie.image}`}
+              alt={movie.title}
+              className="card-img-top img-fluid"
+              style={{ maxWidth: "600px", margin: "0 auto" }}
+            />
+          </div>
+        </div>
 
-      <h3>Reeviews</h3>
-      {reviews.length === 0 ? (
-        <p>No reviews</p>
-      ) : (
-        <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <strong>{review.name}:</strong> {review.text} <br />
-              <strong>Voto:</strong> {review.vote}
-            </li>
-          ))}
-        </ul>
-      )}
+        {/* Informazioni film */}
+        <div className="col-md-8">
+          <div className="card mb-4 shadow-sm w-100">
+            <div className="card-body">
+              <h1 className="card-title">{movie.title}</h1>
+              <p>
+                <strong>Director:</strong> {movie.director}
+              </p>
+              <p>
+                <strong>Genre:</strong> {movie.genre}
+              </p>
+              <p>
+                <strong>Release Year:</strong> {movie.release_year}
+              </p>
+              <p>
+                <strong>Abstract:</strong> {movie.abstract}
+              </p>
+            </div>
+          </div>
+
+          {/* Recensioni */}
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h3>Reviews</h3>
+              {reviews.length === 0 ? (
+                <p>No reviews</p>
+              ) : (
+                <ul className="list-group">
+                  {reviews.map((review) => (
+                    <li className="list-group-item" key={review.id}>
+                      <strong>{review.name}:</strong> {review.text} <br />
+                      <strong>Rating:</strong> {review.vote}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
