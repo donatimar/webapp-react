@@ -12,10 +12,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route Component={DefaultLayout}>
-          <Route path="/" Component={HomePage} />
-          <Route path="/moviedetail" Component={MovieDetail} />
-          <Route path="*" Component={NotFoundPage} />
+        <Route element={<DefaultLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/moviedetail/:id" element={<MovieDetail />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]); // State per salvataggio dei film
@@ -15,30 +16,31 @@ export default function HomePage() {
         return response.json();
       })
       .then((data) => {
-        setMovies(data); // Salva i film nello State
+        setMovies(data);
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message); // Salva l'errore nello State
+        setError(err.message);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <div>Caricamento in corso</div>;
+    return <div>Loading</div>;
   }
 
   if (error) {
-    return <div>Errore {error}</div>;
+    return <div>Error {error}</div>;
   }
 
   return (
     <div className="container py-5">
-      <h1>Lista dei film</h1>
+      <h1>Film List</h1>
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            {movie.title} ({movie.release_year}) - Genre:{" "}
+            <Link to={`/moviedetail/${movie.id}`}>{movie.title}</Link> (
+            {movie.release_year}) - Genre:{" "}
             {movie.genre ? movie.genre : "Genere non disponibile"}
           </li>
         ))}
