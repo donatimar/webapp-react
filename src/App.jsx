@@ -5,7 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 
 // pages
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
+import MovieDetail from "./pages/MovieDetail";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route Component={DefaultLayout}>
           <Route path="/" Component={HomePage} />
-          <Route path="/about" Component={AboutPage} />
+          <Route path="/moviedetail" Component={MovieDetail} />
           <Route path="*" Component={NotFoundPage} />
         </Route>
       </Routes>
