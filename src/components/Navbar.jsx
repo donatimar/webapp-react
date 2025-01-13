@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
+  const handleClick = (event) => {
+    event.preventDefault(); // Previene il comportamento di default (navigazione)
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
@@ -26,7 +30,12 @@ export default function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/moviedetail">
+              <NavLink
+                className="nav-link disabled"
+                to="/moviedetail"
+                onClick={handleClick}
+                aria-disabled="true"
+              >
                 Movie Details
               </NavLink>
             </li>
